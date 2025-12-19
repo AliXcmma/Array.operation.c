@@ -1,0 +1,60 @@
+1)Add an element end of double linked list:
+void insertEnd(struct Node** head, int data) {
+    struct Node* newNode = createNode(data);
+    struct Node* temp = *head;
+
+    if (*head == NULL) {
+        *head = newNode;
+        return;
+    }
+
+    while (temp->next != NULL)
+        temp = temp->next;
+
+    temp->next = newNode;
+    newNode->prev = temp;
+}
+
+2)Delete all the elements of a linked list:
+void deleteAll(struct Node* head) {
+    if (head == NULL)
+        return;
+
+    deleteAll(head->next);
+    free(head);
+}
+
+3)Add an element between elements at double linked list:
+void insertBetween(struct Node* prevNode, int data) {
+    if (prevNode == NULL)
+        return;
+
+    struct Node* newNode = createNode(data);
+
+    newNode->next = prevNode->next;
+    newNode->prev = prevNode;
+
+    if (prevNode->next != NULL)
+        prevNode->next->prev = newNode;
+
+    prevNode->next = newNode;
+}
+
+4)Difference between circular linked list and linked list:
+Normal Linked List:
+	The next pointer of the last node points to NULL.
+	Traversal is simple because the ending condition is clear.
+	Sorting algorithms (such as Bubble Sort or Insertion Sort) are easier to implement.
+	No risk of infinite loop if traversal conditions are correct.
+
+Circular Linked List:
+	The next pointer of the last node points back to the head node.
+	There is no NULL pointer to indicate the end of the list.
+	Traversal must be handled carefully to avoid infinite loops.
+	Sorting algorithms require additional stopping conditions (for example, checking if we reach the head again).
+
+Feature:                     Linked list:      Circular linked list:
+End condition                NULL              Back to head
+Traversal                    Easy              More complex
+Sorting implementation       Simple            More complex
+Risk of infinite loop        Low               High if not careful
