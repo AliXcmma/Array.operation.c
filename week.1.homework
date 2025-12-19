@@ -5,12 +5,12 @@ int main() {
     int size = 5;
     int i, temp;
 
-    / traversal /
+    // traversal 
     for (i = 0; i < size; i++)
         printf("%d ", arr[i]);
     printf("\n");
 
-    / reverse /
+    // reverse 
     for (i = 0; i < size / 2; i++) {
         temp = arr[i];
         arr[i] = arr[size - 1 - i];
@@ -21,7 +21,7 @@ int main() {
         printf("%d ", arr[i]);
     printf("\n");
 
-    / insertion (index 2, value 25) /
+    // insertion (index 2, value 25) 
     for (i = size; i > 2; i--)
         arr[i] = arr[i - 1];
     arr[2] = 25;
@@ -31,7 +31,7 @@ int main() {
         printf("%d ", arr[i]);
     printf("\n");
 
-    / deletion (index 3) /
+    // deletion (index 3) 
     for (i = 3; i < size - 1; i++)
         arr[i] = arr[i + 1];
     size--;
