@@ -1,4 +1,4 @@
-# Array.operation.c
+# data_structure_homeworks
 Week 1 homework 
 Week 2 homework
 Week 3 homework
