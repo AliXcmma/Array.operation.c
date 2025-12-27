@@ -1,0 +1,73 @@
+#include <stdio.h>
+
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void heapifyMax(int arr[], int n, int i) {
+    int largest = i;         
+    int left = 2 * i + 1;    
+    int right = 2 * i + 2; 
+
+    if (left < n && arr[left] > arr[largest])
+        largest = left;
+
+    if (right < n && arr[right] > arr[largest])
+        largest = right;
+
+    if (largest != i) {
+        swap(&arr[i], &arr[largest]);
+        heapifyMax(arr, n, largest);
+    }
+}
+
+void heapifyMin(int arr[], int n, int i) {
+    int smallest = i;       
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+
+    if (left < n && arr[left] < arr[smallest])
+        smallest = left;
+
+    if (right < n && arr[right] < arr[smallest])
+        smallest = right;
+
+    if (smallest != i) {
+        swap(&arr[i], &arr[smallest]);
+        heapifyMin(arr, n, smallest);
+    }
+}
+
+void printArray(int arr[], int n) {
+    for (int i = 0; i < n; ++i)
+        printf("%d ", arr[i]);
+    printf("\n");
+}
+
+int main() {
+    int arr1[] = {12, 11, 13, 5, 6, 7};
+    int n1 = sizeof(arr1) / sizeof(arr1[0]);
+
+    int arr2[] = {12, 11, 13, 5, 6, 7};
+    int n2 = sizeof(arr2) / sizeof(arr2[0]);
+
+    printf("Original Array: ");
+    printArray(arr1, n1);
+    printf("\n");
+
+    for (int i = n1 / 2 - 1; i >= 0; i--)
+        heapifyMax(arr1, n1, i);
+
+    printf("Max Heap Result: ");
+    printArray(arr1, n1);
+
+    for (int i = n2 / 2 - 1; i >= 0; i--)
+        heapifyMin(arr2, n2, i);
+
+    printf("Min Heap Result: ");
+    printArray(arr2, n2);
+
+    return 0;
+}
