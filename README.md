@@ -1,11 +1,3 @@
 # data_structure_homeworks
-1 homework 
-2 homework
-3 homework
-4 homework
-5 homework
-6 homework
-7 homework
-8 homework
-9 homework
-10 homework
+Name: Samandar Husniddinov
+Student number: 2210213605
